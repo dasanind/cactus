@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour {
 				restart = true;
 				Debug.Log ("finalScore: " + score);
 				userName = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-				string post_url = postScoreURL + "gameover=" + gameOver + "&name=" + userName + "&score=" + score;
+				string post_url = postScoreURL + "gameover=" + gameOver + "&name=" + WWW.EscapeURL(userName) + "&score=" + score;
 				Debug.Log ("post_url: " + post_url);
 				Debug.Log ("name:" + userName);
 				// Post the URL to the site and create a download object to get the result.
