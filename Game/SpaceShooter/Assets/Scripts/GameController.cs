@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 	public GUIText restartText;
 	public GUIText gameOverText;
 	public string postScoreURL = "http://172.99.106.210:8080/data.php?";
+	public string userName;
 
 	private bool gameOver;
 	private bool restart;
@@ -54,8 +55,10 @@ public class GameController : MonoBehaviour {
 				restartText.text = "Press 'R' for Restart";
 				restart = true;
 				Debug.Log ("finalScore: " + score);
-				string post_url = postScoreURL + "gameover=" + gameOver + "&score=" + score;
+				userName = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+				string post_url = postScoreURL + "gameover=" + gameOver + "&name=" + userName + "&score=" + score;
 				Debug.Log ("post_url: " + post_url);
+				Debug.Log ("name:" + userName);
 				// Post the URL to the site and create a download object to get the result.
 				WWW hs_post = new WWW(post_url);
 				yield return hs_post; // Wait until the download is done
